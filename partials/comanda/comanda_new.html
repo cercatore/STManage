@@ -1,0 +1,102 @@
+<style>
+		.customtable{
+
+			height:50%;
+			box-shadow:0 0 10px black;
+			-webkit-box-shadow: 10px blue;
+			-moz-box-shadow: 20 px green;
+		}
+		.btn-group ul li:hover{
+			background-color:blue;
+			color:white;
+
+	    }
+	    .btn-group ul li {
+			padding:10px 20px 10px;
+		}
+		</style>
+<div class="card">
+	<div class="card-block">
+	<h2 class="p-y-1 text-xs-center">Primi</h2>
+		<div class="table-responsive">
+			<table id="comanda" class="table p-x-2 customtable table-white pre-scrollable ">
+				<thead>
+				<tr>
+					<td>action</td>
+					<td>portata</td>
+					<td>formato</td>
+					<td>prezzo</td>
+					<td>extra</td>
+					<td>veroprez</td>
+				</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key, com) in comandaPageItem">
+						<td><button class="btn btn-warning fa fa-minus" ng-click="removeComanda(key)"></button></td>
+						<td>{{com.nome}}</td>
+						<td>{{com.formato}} - {{com.formato_p}}</td>
+						<td>{{com.prezzo}}</td>
+						<td>{{com.extra}} - {{com.extra_prezzo}}</td>
+						<td>{{ com.formato_p ? com.formato_p + com.extra_prezzo: com.prezzo + com.extra_prezzo }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div ng-controller="comandaCtrl"></div>
+<div class="card card-block">
+<div class="text-xs-center">
+	<div class="btn-group center-block">
+		<label for="dropdownMenu1">Scegli categoria...</label>
+		<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
+		    {{selected }}
+			<span class="caret"></span>
+
+		</button>
+		         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                   <li ng-repeat="i in categorie"><a ng-click="dropdownItemSelected(i)">{{i}}</a></li>
+                 </ul>
+               </div>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-block">
+	<h2 class="p-y-1 text-xs-center">{{selected}}</h2>
+		<div class="table-responsive">
+			<table class="table table-inverse table-bordered text-xs-center">
+				<thead>
+					<tr>
+						<td>Nome</td>
+						<td colspan='2'>&euro;</td>
+						<td>Formato</td>
+						<td>Extra</td>
+						<td colspan="3">Prezzo</td>
+						<td></td>
+					</tr>
+				</thead>
+
+				<tbody >
+				<form name="portataSelForm">
+					<tr ng-repeat="item in portate" >
+					<td>{{item.nome}}</td>
+					<td colspan='2'>{{item.prezzo}}</td>
+					<td>
+					<select class="form-control" name="formato" placeholder="seleziona ..." ng-model="formato_id">
+						<option active value="">Seleziona...</option>
+						<option value="{{formato._id}}" ng-repeat="formato in item.formati">{{formato.nome}} - {{formato.prezzo}}</option>
+					</select>
+
+					</td>
+					<td>{{item.extraNome}}</td>
+					<td colspan="3">{{item.extraPrezzo}}</td>
+					<td><a class='btn btn-secondary' ng-click="pickPortata(item._id, formato_id)"><i class="fa fa-plus"></i></a></td>
+					</tr>
+				</form>
+				</tbody>
+				</table>
+			&nbsp;
+		</div>
+	</div>
+</div>

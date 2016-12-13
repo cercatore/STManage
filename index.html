@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-app lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=yes, maximum-scale=1.0, width=device-width, height=device-height" />
+    <link href="css/bootstrap.4.0.0-alpha.3.min.css" rel="stylesheet">
+	<link href="css/font-awesome.4.6.3.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.css.map" rel="stylesheet">-->
+    <style type="text/css">
+    ul li a{ display:block; 
+			cursor: pointer;
+			padding:10px 20px 10px;}
+	li a:hover{
+			background-color:blue;
+			color:#ffffff;
+			}
+    </style>
+    <title>{{title}}</title>
+</head>
+<style>
+	.custom-nav-style {
+		border : 1px solid blue;
+		box-shadow: 10px 0 10px black;
+		background-color: #00ff80;
+		}
+</style>
+<body>
+<div class="navbar navbar-default custom-nav-style" id="navbar" >
+    <div class="container" id="navbar-container">
+    <div class="navbar-header">
+		<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-12">
+        <div><img src="copyright-logo.png"></div>
+		<a href="/" class="navbar-brand">
+            <small>
+                <i class="fa fa-sign-out"></i>
+                Intell. Property of Claudio &copy;2016
+            </small>
+        </a>
+		</div>
+        		<div class="col-lg-6">
+					<a class="btn btn-secondary dropdown-toggle form-control text-md-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
+						{{loginStatus }}
+						<span class="caret"></span>
+					
+					</a>
+							 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							   <li ng-repeat="i in loginActions"><a href="#login" ng-click="">{{i}}</a></li>
+							 </ul>
+				</div>
+		</div>
+	</div><!-- /.navbar-header -->
+    <div class="navbar-header pull-right"  role="navigation">
+		<div class="btn-group" style="padding:10px 0px">
+			<a href="#login" class="btn btn-lg btn-secondary"> <i class="fa fa-xl fa-home"></i>&nbsp;HOME</a>
+			<a href="#comanda" class="btn btn-lg btn-success"> <i class="fa fa-xl fa-home"></i>&nbsp;comanda</a>
+			<a href="#lista_portate" class="btn btn-lg btn-danger"> <i class="fa fa-xl fa-book"></i>&nbsp;lista</a>
+			<a href="#admin" class="btn btn-lg btn-primary"> <i class="fa fa-download"></i>&nbsp;ADMIN</a>
+		</div>
+		<button class="btn btn-lg btn-secondary" ng-click="logout()">ESCI</button>
+    
+    </div>
+	</div>
+</div>
+
+
+<div class="container">
+
+    <div ng-view id="ng-view"></div>
+   
+</div>
+<script src="js/jquery.3.1.0.min.js"></script>
+<script src="js/tether.1.3.4.min.js"></script>
+<script src="js/bootstrap.4.0.0-alpha.3.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-messages.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-animate.js"></script>
+<script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA_sfaXNZwu2swnI2u-TGWQgMDpd_h3UVQ",
+    authDomain: "tennisscore-143814.firebaseapp.com",
+    databaseURL: "https://tennisscore-143814.firebaseio.com",
+    storageBucket: "tennisscore-143814.appspot.com",
+    messagingSenderId: "751367294887",
+	name:"bellomnondo"
+  };
+  var fbapp = firebase.initializeApp(config);
+  console.log(fbapp.name); 
+  
+</script>
+<script src="partials/shared/modal.js"></script>
+<script src="app/app.js"></script>        
+
+<script src="partials/portata/controllerPortata.js"></script>
+<script src="partials/viewPortata/list_portate.js"></script>
+<script src="partials/comanda/controllerComanda.js"></script>
+</body>
+</html>
