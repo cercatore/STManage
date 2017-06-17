@@ -8,12 +8,13 @@ var app = angular.module('myApp',
 	'shared'
 	])
 
-
+	
 function getNext(){
 	return new Date().getTime()
 }
 
 app.value('serviceBase' , 'https://api.mlab.com/api/1/databases/cbmanager/collections/' );
+app.value('categorieHC' , [ "FIRST COURSE" , "SECOND COURSE" , "SIDE DISHES" , "BEVERAGES"]);
 
 app.factory("services", ['$http' , 'serviceBase', function($http , serviceBase ) {
   var docName = "portate"
@@ -56,7 +57,7 @@ app.factory("services", ['$http' , 'serviceBase', function($http , serviceBase )
 					alert(status + "\n " + JSON.stringify(data) )
 			})
 		}
-	
+	obj.catArray = [ "PRIMI" , "SECONDI" , "CONTORNI" , "BIBITE"];
 	return obj;
 	
 }])
@@ -84,11 +85,12 @@ app.controller('loginCtrl',  function ($rootScope, $scope, $location, $routePara
 		}
 });
 
-app.config(['$routeProvider',
-  function($routeProvider) {
+app.config(
+  function($routeProvider, $httpProvider) {
+	  	//alert ("useXDomain prop is " + $httpProvider.defaults.useXDomain)
     $routeProvider.
       when('/comanda', {
-			title:"CHECAZZODAI",					// title: 'LOGIN',
+			title:"PRFESSIONAL HOME PAGE DEVELOPER CLAUDIO",					// title: 'LOGIN',
 			templateUrl:"/partials/comanda/comanda_new.html",			// templateUrl: 'login.html',
 			controller:"comandaCtrl"					// controller: 'loginCtrl'
       })
@@ -110,13 +112,13 @@ app.config(['$routeProvider',
       })
 	  .when('/' , {
 			title : 'youra mess',
-			templateUrl: '/partials/home.html',
+			templateUrl: 'home.html',
 			
 	  })
       .otherwise({
         redirectTo: '/'
       });
-}]);
+});
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -129,7 +131,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 app.run(['$location', '$rootScope', function($location, $rootScope) {
 	$rootScope.loginActions  = [ "LOGIN" ];
-	$rootScope.loginStatus = "Welcome Guest"
+	$rootScope.loginStatus = "Sign In"
 		// const user = firebase.auth().currentUser;
 				// if (user){ // getProfile
 					// $rootScope.loginActions = [  "CONTACT", 'EMAIL', 'EDIT PICTURE', 'LOGOUT']

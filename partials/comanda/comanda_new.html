@@ -2,7 +2,7 @@
 		.customtable{
 
 			height:50%;
-			box-shadow:0 0 10px black;
+			box-shadow:10px 0 10px black;
 			-webkit-box-shadow: 10px blue;
 			-moz-box-shadow: 20 px green;
 		}
@@ -17,17 +17,17 @@
 		</style>
 <div class="card">
 	<div class="card-block">
-	<h2 class="p-y-1 text-xs-center">Primi</h2>
+	<h2 class="p-y-1 text-xs-center">ORDER</h2>
 		<div class="table-responsive">
 			<table id="comanda" class="table p-x-2 customtable table-white pre-scrollable ">
 				<thead>
 				<tr>
 					<td>action</td>
-					<td>portata</td>
-					<td>formato</td>
-					<td>prezzo</td>
-					<td>extra</td>
-					<td>veroprez</td>
+					<td>course</td>
+					<td>format</td>
+					<td>price</td>
+					<td>extras</td>
+					<td>total</td>
 				</tr>
 				</thead>
 				<tbody>
@@ -42,13 +42,16 @@
 				</tbody>
 			</table>
 		</div>
+		<button class="btn btn-primary pull-right">ACCEPT AND ORDER</button>
+		<button class="btn btn-default pull-left">CANCEL</button>
+		
 	</div>
 </div>
 <div ng-controller="comandaCtrl"></div>
 <div class="card card-block">
 <div class="text-xs-center">
 	<div class="btn-group center-block">
-		<label for="dropdownMenu1">Scegli categoria...</label>
+		<label for="dropdownMenu1">Pick Course...</label>
 		<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
 		    {{selected }}
 			<span class="caret"></span>
@@ -63,16 +66,17 @@
 
 <div class="card">
 	<div class="card-block">
+	<img src="images/spiffy.gif" ng-show="isLoading">
 	<h2 class="p-y-1 text-xs-center">{{selected}}</h2>
 		<div class="table-responsive">
 			<table class="table table-inverse table-bordered text-xs-center">
 				<thead>
 					<tr>
-						<td>Nome</td>
+						<td>Name</td>
 						<td colspan='2'>&euro;</td>
-						<td>Formato</td>
-						<td>Extra</td>
-						<td colspan="3">Prezzo</td>
+						<td>Format</td>
+						<td>Extras</td>
+						<td colspan="3">Exs.Price</td>
 						<td></td>
 					</tr>
 				</thead>

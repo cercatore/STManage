@@ -14,7 +14,7 @@ angular.module("myApp.viewPortata" , ['ngAnimate'])
             },
             function ()
             {
-				alert("canceled")
+				//alert("canceled")
             });
 	}
 	$scope.categorie = [ "PRIMI" , "SECONDI" , "CONTORNI" , "BIBITE"]

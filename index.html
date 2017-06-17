@@ -23,45 +23,62 @@
 		box-shadow: 10px 0 10px black;
 		background-color: #00ff80;
 		}
+	.pull-right .navbar-toggle:after {
+    left: auto;
+    right: 13px;
+	}
+	.pull-right .navbar-toggle {
+		left: auto;
+		right: 0;
+	}
+	li { list-style-type:none;}
 </style>
-<body>
-<div class="navbar navbar-default custom-nav-style" id="navbar" >
-    <div class="container" id="navbar-container">
-    <div class="navbar-header">
-		<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-12">
-        <div><img src="copyright-logo.png"></div>
-		<a href="/" class="navbar-brand">
-            <small>
-                <i class="fa fa-sign-out"></i>
-                Intell. Property of Claudio &copy;2016
-            </small>
-        </a>
-		</div>
-        		<div class="col-lg-6">
-					<a class="btn btn-secondary dropdown-toggle form-control text-md-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
-						{{loginStatus }}
-						<span class="caret"></span>
-					
-					</a>
-							 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							   <li ng-repeat="i in loginActions"><a href="#login" ng-click="">{{i}}</a></li>
-							 </ul>
-				</div>
-		</div>
-	</div><!-- /.navbar-header -->
-    <div class="navbar-header pull-right"  role="navigation">
-		<div class="btn-group" style="padding:10px 0px">
-			<a href="#login" class="btn btn-lg btn-secondary"> <i class="fa fa-xl fa-home"></i>&nbsp;HOME</a>
-			<a href="#comanda" class="btn btn-lg btn-success"> <i class="fa fa-xl fa-home"></i>&nbsp;comanda</a>
-			<a href="#lista_portate" class="btn btn-lg btn-danger"> <i class="fa fa-xl fa-book"></i>&nbsp;lista</a>
-			<a href="#admin" class="btn btn-lg btn-primary"> <i class="fa fa-download"></i>&nbsp;ADMIN</a>
-		</div>
-		<button class="btn btn-lg btn-secondary" ng-click="logout()">ESCI</button>
-    
-    </div>
+<body style="background-color:#CCC">
+
+<nav class="navbar navbar-default navbar-top marginBottom-0" role="navigation" >
+         <div class="container">
+	
+	<a class="navbar-brand margin-left:30px" href="#"><img src="/images/copyright-logo.png"><em><i>MANAGE</i></em></a>
+	
+  <div class="navbar-header">
+    <button class="btn btn-secondary dropdown-toggle pull-right" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" id="dropdownMenu1">
+						<span class="fa fa-user">{{loginStatus }}</span>
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		   <li ng-repeat="i in loginActions"><a href="#login" ng-click="">{{i}}</a></li>
+		</ul>
+	
+	
+		
+	<button type="button" class="navbar-toggle btn btn-primary pull-right" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+	  <i class="fa fa-bars fa-lg"></i>
+    </button>    
+	<div>
+	
 	</div>
+  </div>  
+  
+  
 </div>
+</nav>
+<div class="navbar-collapse collapse">
+   	
+    <ul class="navbar-nav">
+	<div class="text-sm-center ">
+	
+      <li><a href="#login" class="btn btn-lg btn-primary" style="width:50%;background-color:#ee0040"> <i class="fa fa-home"></i>&nbsp;HOME</a></li>
+	  <li><a href="#comanda" class="btn btn-lg btn-primary"  style="width:50%;background-color:#eeee00"> <i class="fa fa-shopping-cart"></i>&nbsp;WAITER</a></li>
+	  <li><a href="#lista_portate" class="btn btn-lg btn-primary" style="width:50%;background-color:#00FF80"> <i class="fa fa-xl fa-book"></i>&nbsp;PRODUCTS</a>
+	  <li><a href="#admin" class="btn btn-lg btn-primary" style="width:50%;background-color:#00eeee"> <i class="fa fa-user"></i>&nbsp;ADMIN</a></li>	
+	  <li><a href="#/" class="btn btn-lg btn-secondary" style="width:50%;"> <i class="fa fa-xl fa-about"></i>&nbsp;about</a></li>
+	  	  
+	</div>
+    </ul>
+    </div>
 
 
 <div class="container">
@@ -80,7 +97,7 @@
 <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 
 <script>
-  // Initialize Firebase
+// Initialize Firebase
   var config = {
     apiKey: "AIzaSyA_sfaXNZwu2swnI2u-TGWQgMDpd_h3UVQ",
     authDomain: "tennisscore-143814.firebaseapp.com",

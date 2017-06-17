@@ -20,8 +20,18 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 		{ "_id" : 1479744769267 , "nome" : "ewfff" , "prezzo" : 2 , "category" : "PRIMI" , "formati" : [ { "_id" : 1479744750640 , "nome" : "ciao" , "prezzo" :  1 }]}
 
 		]
+		$scope.isLoading = false;
+		$scope.categorie = [ "PRIMI" , "SECONDI" , "CONTORNI" , "BIBITE"]
+	
+		$scope.dropdownItemSelected = function(categoria){
+			$scope.isLoading = true
+			services.getPortateCategoryFilter(categoria).then(function(response){
+				$scope.portate = response.data;
+				$scope.isLoading = false
+			});
+			$scope.selected = categoria;
+		};
 		
-
 		$scope.pickPortata = function (rigaID, formatoID){
 			console.log(formatoID);
 			var comanda = {};
@@ -38,6 +48,7 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 					comanda.extra = item.extraNome;
 					comanda.extra_prezzo = item.extraPrezzo;
 					comanda.stato = "OPEN";
+					comanda.tavolo = "18";
 					var comId = getNext();
 					$scope.comandaPageItem["a" + comId] = comanda;
 					
@@ -45,6 +56,9 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 				}
 			})
 
+		}
+		$scope.saveComanda = function () {
+			
 		}
 		$scope.removeComanda = function ( comandaID ){
 			delete $scope.comandaPageItem[comandaID]
