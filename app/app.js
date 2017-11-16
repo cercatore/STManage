@@ -58,6 +58,14 @@ app.factory("services", ['$http' , 'serviceBase', function($http , serviceBase )
 			})
 		}
 	obj.catArray = [ "PRIMI" , "SECONDI" , "CONTORNI" , "BIBITE"];
+
+	obj.insertComanda = function(itemComanda){
+        return $http.post(serviceBase + 'comande' + '?apiKey=LC-wif-orODQhsURWZf43a-I0x2hjhIf' , itemComanda)
+			.error( function ( data, status) {
+				alert(status)
+            })
+	}
+
 	return obj;
 	
 }])

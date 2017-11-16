@@ -16,10 +16,7 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 		$scope.comandaPageItem = {};
 		
 
-		$scope.portate = [{ "_id" : 1479691518620 , "prezzo" : 12.22 , "category" : "SECONDI" , "formati" : [ { "_id" : 1479691498294 , "nome" : "costa caro" , "prezzo" : 8}, { "_id" : 1479691498295 , "nome" : "+caro" , "prezzo" : 10}] , "extraNome" : "kdjfs" , "extraPrezzo" : 12.33 , "nome" : "pesce"},
-		{ "_id" : 1479744769267 , "nome" : "ewfff" , "prezzo" : 2 , "category" : "PRIMI" , "formati" : [ { "_id" : 1479744750640 , "nome" : "ciao" , "prezzo" :  1 }]}
-
-		]
+	
 		$scope.isLoading = false;
 		$scope.categorie = [ "PRIMI" , "SECONDI" , "CONTORNI" , "BIBITE"]
 	
@@ -57,10 +54,20 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 			})
 
 		}
-		$scope.saveComanda = function () {
-			
-		}
+
 		$scope.removeComanda = function ( comandaID ){
 			delete $scope.comandaPageItem[comandaID]
 		}
 }])
+	.controller( "addComandaCtrl" , ['$scope', '$rootScope' , '$location' , '$routeParams' , 'services' ,function ($scope ,  $rootScope, $location, $routeParams, services , dialogService)  {
+        $scope.saveComanda = function () {
+            // riordino le comande mettendo lo stesso tavolo
+            angular.forEach($scope.comandaPageItem, function(itemComanda) {
+                var tavolo = 19;
+                itemComanda.tavolo = tavolo;
+
+                services.insertComanda(itemComanda);
+            })
+
+        }
+    }])

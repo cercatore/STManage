@@ -1,9 +1,0 @@
-curl -X POST -H "Authorization: key=AIzaSyAdXWYvzpJUL-CmRbqgEaHJn7hPqKakkjQ" -H "Content-Type: application/json" -d '{
-  "notification": {
-    "title": "Portugal vs. Denmark",
-    "body": "5 to 1",
-    "icon": "firebase-icon.png",
-    "click_action": "http://cbmanager.hopto.org"
-  },
-  "to": "f2mdwTiEyfc:APA91bELCOBd5uPky5Yd2xuyZAnm2DPyIE2fp0fE5YMuXiZYw1BjL1Y2woSatQrGAPaixUGJtHRtPrFNE6xo__bdDXtrxpaX0Z4vFGTPZ1oPkut8BFHmRinf3KiNLlBMkFGlNWKHF5pk"
-}' "https://fcm.googleapis.com/fcm/send"

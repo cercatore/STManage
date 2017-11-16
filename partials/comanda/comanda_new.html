@@ -15,7 +15,7 @@
 			padding:10px 20px 10px;
 		}
 		</style>
-<div class="card">
+<div class="card" ng-controller="addComandaCtrl">
 	<div class="card-block">
 	<h2 class="p-y-1 text-xs-center">ORDER</h2>
 		<div class="table-responsive">
@@ -42,7 +42,7 @@
 				</tbody>
 			</table>
 		</div>
-		<button class="btn btn-primary pull-right">ACCEPT AND ORDER</button>
+		<button class="btn btn-primary pull-right" ng-click="saveComanda()">ACCEPT AND ORDER</button>
 		<button class="btn btn-default pull-left">CANCEL</button>
 		
 	</div>

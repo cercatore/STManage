@@ -1,0 +1,39 @@
+<md-toolbar>
+    
+  <div class="md-toolbar-tools">
+  <h2 >fabrizio mamma paolo peppe ambrogio</h2>
+  <md-button class="md-icon-button" aria-label="Favorite">
+      <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+    </md-button>
+
+    <md-button class="md-icon-button" aria-label="More">
+      <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+<div class="container" layout="column" ng-controller="issueController">
+  <form role="form">
+
+    <input name="issue_name" value="claudio" type="text" class="md-input" placeholder="name" ng-model="issue.name">
+    <label for="issue_name" >Il mio nome</label>
+
+    <input name="data_ap" type="date" value="06/22/1977" class="md-input" placeholder="date" ng-model="issue.date" >
+    <label for="data_ap">Data open</label>
+
+    <input type="textarea" class="md-inputarea" placeholder="description" ng-model="issue.descr">
+
+    <input type="text" class="md-input" placeholder="reporter" ng-model="issue.reporter">
+
+    <input type="priorita" class="md-input" placeholder="priorità" value="1" step="1" ng-model="issue.number">
+  </form>
+
+</div>
+<script>
+  var app = angular.module( 'myApp' , ['ngMaterial'])
+
+  app.
+    controller( "issueController" , function($rootscope, $scope , $http) {
+      $scope.addIssue = function(){
+
+      }
+    })

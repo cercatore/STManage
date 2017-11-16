@@ -1,0 +1,33 @@
+<div class="card" ng-controller="cucinaCtrl">
+    <div class="card-block">
+        <h2 class="p-y-1 text-xs-center">CUCINA CUOCO</h2>
+        <div class="table-responsive">
+            <table id="comanda" class="table p-x-2 customtable table-white pre-scrollable ">
+                <thead>
+                <tr>
+                    <td>category</td>
+                    <td>course</td>
+                    <td>format</td>
+                    <td>price</td>
+                    <td>extras</td>
+                    <td>total</td>
+                    <td>ACTION</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key, com) in comandeItems">
+                    <td>{{com.category}}</td>
+                    <td>{{com.nome}}</td>
+                    <td>{{com.formato}} - {{com.formato_p}}</td>
+                    <td>{{com.prezzo}}</td>
+                    <td>{{com.extra}} - {{com.extra_prezzo}}</td>
+                    <td>{{ com.formato_p ? com.formato_p + com.extra_prezzo: com.prezzo + com.extra_prezzo }}</td>
+                    <td><button class="btn btn-primary fa fa-magnet" ng-click="faiqualcosa(key)"></button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+
+    </div>
+</div>
