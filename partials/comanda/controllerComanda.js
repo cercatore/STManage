@@ -13,13 +13,12 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 
 .controller('comandaCtrl' , ['$scope', '$rootScope' , '$location' , '$routeParams' , 'services' ,function ($scope ,  $rootScope, $location, $routeParams, services , dialogService)  {
 
-		$scope.comandaPageItem = {};
-		
+		$scope.comandaSelect = "Pick Course Category"
+		$scope.comandaPageList = {};
 
-	
 		$scope.isLoading = false;
 		$scope.categorie = [ "PRIMI" , "SECONDI" , "CONTORNI" , "BIBITE"]
-	
+
 		$scope.dropdownItemSelected = function(categoria){
 			$scope.isLoading = true
 			services.getPortateCategoryFilter(categoria).then(function(response){
@@ -28,7 +27,7 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 			});
 			$scope.selected = categoria;
 		};
-		
+
 		$scope.pickPortata = function (rigaID, formatoID){
 			console.log(formatoID);
 			var comanda = {};
@@ -47,22 +46,22 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
 					comanda.stato = "OPEN";
 					comanda.tavolo = "18";
 					var comId = getNext();
-					$scope.comandaPageItem["a" + comId] = comanda;
-					
-					
+					$scope.comandaPageList["a" + comId] = comanda;
+
+
 				}
 			})
 
 		}
 
 		$scope.removeComanda = function ( comandaID ){
-			delete $scope.comandaPageItem[comandaID]
+			delete $scope.comandaPageList[comandaID]
 		}
 }])
-	.controller( "addComandaCtrl" , ['$scope', '$rootScope' , '$location' , '$routeParams' , 'services' ,function ($scope ,  $rootScope, $location, $routeParams, services , dialogService)  {
+	.controller( "addComandaCtrl" , ['$scope', '$rootScope' , '$location' , '$routeParams' , 'services', 'dialogService', function ($scope ,  $rootScope, $location, $routeParams, services , dialogService)  {
         $scope.saveComanda = function () {
             // riordino le comande mettendo lo stesso tavolo
-            angular.forEach($scope.comandaPageItem, function(itemComanda) {
+            angular.forEach($scope.comandaPageList, function(itemComanda) {
                 var tavolo = 19;
                 itemComanda.tavolo = tavolo;
 
@@ -70,4 +69,15 @@ angular.module("myApp.comandaPick" , [ "shared" , "ui.bootstrap" , "ui.bootstrap
             })
 
         }
+				$scope.noPanic = function(data){
+					 dialogService.showConfirmDialog(
+			            'ORDER SENT TO WORKERS!',
+						data)
+			            .then(function ()
+			            {
+			            },
+			            function ()
+			            {
+			            });
+				}
     }])

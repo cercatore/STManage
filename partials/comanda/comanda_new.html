@@ -31,7 +31,7 @@
 				</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="(key, com) in comandaPageItem">
+					<tr ng-repeat="(key, com) in comandaPageList">
 						<td><button class="btn btn-warning fa fa-minus" ng-click="removeComanda(key)"></button></td>
 						<td>{{com.nome}}</td>
 						<td>{{com.formato}} - {{com.formato_p}}</td>
@@ -42,9 +42,9 @@
 				</tbody>
 			</table>
 		</div>
-		<button class="btn btn-primary pull-right" ng-click="saveComanda()">ACCEPT AND ORDER</button>
+		<button class="btn btn-primary pull-right" ng-click="noPanic()">ACCEPT AND ORDER</button>
 		<button class="btn btn-default pull-left">CANCEL</button>
-		
+
 	</div>
 </div>
 <div ng-controller="comandaCtrl"></div>
@@ -52,8 +52,8 @@
 <div class="text-xs-center">
 	<div class="btn-group center-block">
 		<label for="dropdownMenu1">Pick Course...</label>
-		<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
-		    {{selected }}
+		<input type="text" ng-model="comandaSelect" class="dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
+
 			<span class="caret"></span>
 
 		</button>

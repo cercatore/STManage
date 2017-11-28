@@ -2,7 +2,7 @@
 angular.module("myApp.viewPortata" , ['ngAnimate'])
 
 .controller('portateCtrl',['$scope' ,  '$rootScope', '$location', '$routeParams', 'services', 'dialogService' , function ($scope ,  $rootScope, $location, $routeParams, services , dialogService)  {
-	
+	$scope.selected = 'Seleziona una categoria';
 	$scope.details = function(data){
 		 dialogService.showConfirmDialog(
             'Confirm!',
@@ -36,7 +36,7 @@ angular.module("myApp.viewPortata" , ['ngAnimate'])
 .directive('animateTrigger', ['$animate', function ($animate) {
 	return function (scope, elem, attrs) {
 		elem.show();
-	
+
 		var flag=true;
 		elem.on('click', function () {
 			  scope.$apply(function() {

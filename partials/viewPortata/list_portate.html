@@ -14,11 +14,11 @@
 <div class="text-xs-center">
 	<div class="btn-group center-block">
 		<label for="dropdownMenu1">Pick Course Category...</label>
-		<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
-		    {{selected }}
+		<input type="text" ng-model="selecton" class="dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="dropdownMenu1">
+
 			<span class="caret"></span>
 
-		</button>
+		</input>
 		         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                    <li ng-repeat="i in categorie"><a ng-click="dropdownItemSelected(i)">{{i}}</a></li>
                  </ul>
@@ -49,7 +49,7 @@
 					<td colspan='2'>{{item.prezzo}}</td>
 					<td>
 						<button  class="btn btn-primary action" ng-click="details(item.formati)" ><i class="fa fa-search">view details</i></button>
-						
+
 					</td>
 					<td>{{item.extraNome}}</td>
 					<td colspan="3">{{item.extraPrezzo}}</td>
