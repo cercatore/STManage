@@ -1,0 +1,75 @@
+<!-- Conversation Start -->
+<div class="row">
+  <div class="col-lg-3">
+    <</div>
+    <div class="col-lg-9">
+      <!-- Heading -->
+      <div class="row heading">
+        <div class="col-sm-2 col-md-1  heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="images/su.jpg" >
+          </div>
+        </div>
+        <div class="col-sm-8 col-md-4 heading-name">
+          <a class="heading-name-meta">THE KTCHEN
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-md-1  heading-dot pull-right">
+          <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+      <!-- Heading End -->
+
+      <!-- Message Box -->
+      <div class="col-sm-12" id="conversation">
+
+        <ul>
+          <div ng-repeat="message in currentChat.messages track by _id">
+            <li style="width:100%" ng-if="message.sender == control.user">
+              <div class="msj macro">
+                <div class="avatar"><img class="img-circle" style="width:100%;" src="/images/{{control.user}}.png" /></div>
+                <div class="text text-l">
+                  <p>{{message.text}}</p>
+                  <p><small>{{message.zdate}}</small></p>
+                </div>
+              </div>
+              <li style="width:100%" ng-if="message.sender != control.user">
+                <div class="msj-rta macro">
+                  <div class="text text-r">
+                    <p>{{message.text}}</p>
+                    <p><small>{{message.zdate}}</small></p>
+                  </div>
+                  <div class="avatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:100%" src="/images/{{control.partner}}.png"></div>
+                </div>
+              </li>
+
+            </div><!-- ng-repaat -->
+          </ul>
+        </div>
+        <!-- Message Box End -->
+
+        <!-- Reply Box -->
+        <form ng-submit="control.addMessage()" name="suform">
+          <div class="row reply">
+            <div class="col-sm-1 col-md-1 reply-emojis">
+              <i class="fa fa-smile-o fa-2x"></i>
+            </div>
+            <div class="col-sm-9 col-md-9 reply-main">
+              <textarea class="form-control" rows="1" ng-model="control.text" name="text" ng-required></textarea>
+              <div ng-messages="suform.text.$errors">
+                <div ng-message="suform.text.$error.required">CIAO</div>
+              </div>
+            </div>
+            <div class="col-sm-1 col-md-1 reply-recording">
+              <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+            </div>
+            <div class="col-sm-1 col-md-1 reply-send">
+              <button type="submit"><i class="fa fa-send fa-2x" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </form>
+        <!-- Reply Box End -->
+      </div>
+      <!-- Conversation-->
+    </div>  row

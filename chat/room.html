@@ -1,0 +1,26 @@
+<style>
+   li a { padding-right:20px}
+   </style>
+
+
+<div class="card card-block py-2" >
+  <input class="form-control" ng-model="control.username" value="pork">
+  <ul class="row">
+    <li><a class="btn btn-info col-sm-3" ng-click="control.sonoPaperino()">IDENTITA GIOVA</a></li>
+    <li><a class="btn btn-success col-sm-3" ng-click="control.sonoMaster()">TUTTO FAI</a></li>
+    <li><a class="btn btn-success col-sm-3" ng-click="control.sonoUser()">ENTRA</a></li>
+  </ul>
+  <br/>
+  <strong><h2>{{chat_error}}</h2></strong>
+  <ul class="row">
+    <li ng-repeat="utente in currentChat.users">
+      <a ng-if="!control.presence[utente.user].offline" class="col-sm-3 btn btn-success"> {{utente.user}}</a>
+      <a ng-if=" control.presence[utente.user].offline" class="col-sm-3 btn btn-default"> {{utente.user}}</a>
+    </li>
+
+  </ul>
+  <br/>
+  <div> {{control.savedTime}} - {{ control.chiama}}
+  <my-messanger></my-messanger>
+
+</div>

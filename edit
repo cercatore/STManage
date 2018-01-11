@@ -1,0 +1,10 @@
+$scope.addGuardone = function (){
+    if ($scope.currentId){
+      var roomRef = self.afs.collection('convers').doc($scope.currentId)
+      temp = {user : 'guardone', presence:'online' }
+      newuser = { ...roomRef.users , temp}
+      roomRef.update({users:newusers})
+    }
+    else console.log('not done')
+
+}

@@ -2,13 +2,13 @@
 	.notify {
 		border : 1px solid red;
 		opacity: 0.5;
-		margin : 0.5em 0 0.5em; 
+		margin : 0.5em 0 0.5em;
 		height:80px;
 		padding:30px 30px;
 		display:none;
 	}
-	
-	
+
+
 </style>
 <div ng-controller="addProductCtrl" class="col-sm-12 text-md-center notify" ajax-result></div>
 <div class="row">
@@ -16,41 +16,41 @@
 	<div class="col-sm-12">
 	<div class="card">
 		<div class="card-block">
-		<h3 class="p-y-1 text-sm-center">INSERISCI PORTATA</h3>
+		<h3 class="p-y-1 text-sm-center">CREATE NEW DISH</h3>
 		<br>
 		<br>
         <div class="row ">
 			<div class="col-sm-4">
 			<fieldset class="form-group">
-				<input class="form-control" name="nome_portata" type="text" placeholder="Nome portata" ng-model="portata.nome"/>
-				<label for="nome_portata">Nome Portata</label>
-				
-			</fieldset>	
+				<input class="form-control" name="nome_portata" type="text" placeholder="Name" ng-model="portata.nome"/>
+				<label for="nome_portata">Name</label>
+
+			</fieldset>
 			</div>
 			<div class="col-sm-4">
 			<fieldset class="form-group">
-				<input class="form-control ng-invalid ng-required" name="prezzo_portata" type="number" placeholder="Prezzo portata" ng-model="portata.prezzo" ng-pattern="/^\d+(.?[0-9][0-9]?)?$/" title="è un numero" step="0.01" required/>
-				<span ng-show="myForm.prezzo_portata.$error.required">campo vuoto!</span>
-				<span ng-show="myForm.prezzo_portata.$error.pattern">se ciao</span>
-				<label for="prezzo_portata">Prezzo Base</label>
-				
-			</fieldset>	
+				<input class="form-control ng-invalid ng-required" name="prezzo_portata" type="number" placeholder="Price" ng-model="portata.prezzo" ng-pattern="/^\d+(.?[0-9][0-9]?)?$/" title="è un numero" step="0.01" required/>
+				<span ng-show="myForm.prezzo_portata.$error.required">empty field!</span>
+				<span ng-show="myForm.prezzo_portata.$error.pattern">must be a number</span>
+				<label for="prezzo_portata">Price</label>
+
+			</fieldset>
 			</div>
 			<div class="col-sm-4">
 			<fieldset class="form-group">
-						
-				
-				<select class="form-control" name="categoria" placeholder="seleziona ..." ng-model="portata.category" title="seleziona categoria" required>
-				<option active value="">Seleziona...</option>
-				<option>PRIMI</option>
-				<option>SECONDI</option>
-				<option>CONTORNI</option>
-				<option>BIBITE</option>
+
+
+				<select class="form-control" name="categoria" placeholder="select one ..." ng-model="portata.category" title="seleziona categoria" required>
+				<option active value="">Select Category...</option>
+				<option>FIRST COURSE</option>
+				<option>SIDE DISHES</option>
+				<option>BEVERAGES</option>
+				<option>DESSERTS</option>
 				</select>
-				<label for="categoria">Categoria</label>
+				<label for="categoria">Category</label>
 			</fieldset>
 			<span ajax-prog style="display:none"><img src="/images/spiffy.gif"></span>
-				
+
 			</div>
 		</div>
 		</div>
@@ -59,17 +59,17 @@
 	<div class="clearfix" >
 	<div class="col-lg-6 col-sm-6 col-xs-12">
 		<div class="card card-block">
-			<h4 class="p-y-1 text-sm-center">Formati</h4>
-			
-        
+			<h4 class="p-y-1 text-sm-center">Available Formats</h4>
+
+
 			<div class="row controls">
 					<div ng-repeat="formato in formati">
 						<fieldset class="input-group">
 							<div class="col-sm-5">
-								<input type="text" ng-model="formato.nome" placeholder="descrizione" title="minimo 3 caratteri" ng-required="formato.prezzo">
+								<input type="text" ng-model="formato.nome" placeholder="descr." title="minimo 3 caratteri" ng-required="formato.prezzo">
 							</div>
 							<div class="col-sm-5">
-								<input type="number" ng-model="formato.prezzo" placeholder="prezzo euro" title="è un numero"  ng-required="formato.nome" ng-pattern="/^\d+(\.?[0-9][0-9]?)?$/" step="0.01">
+								<input type="number" ng-model="formato.prezzo" placeholder="price $" title="è un numero"  ng-required="formato.nome" ng-pattern="/^\d+(\.?[0-9][0-9]?)?$/" step="0.01">
 							</div>
 								<div ng-if="$index == formati.length -1">
 									<span class="btn btn-success pull-right col-sm-2 fa fa-plus" ng-click="add()"></span>
@@ -77,21 +77,21 @@
 								<div ng-if="$index < formati.length -1">
 									<span class="btn btn-danger pull-right col-sm-2 fa fa-minus"  ng-click="remove(formato._id)"></span>
 								</div>
-							
+
 						</fieldset>
-						
+
 					</div>
 			</div>
-			
-			
+
+
 		</div>
-    
+
 	</div>
-	
+
 	<div class="col-lg-6 col-sm-6 col-xs-12 clearfix">
 		<div class="card card-block">
 			<h4 class="p-y-1 text-sm-center">Extra</h4>
-			<label>Descrizione / prezzo</label>
+			<label>Description / price</label>
 			<div class="row p-t-1 p-b-1">
 				<div class="col-sm-9">
 				<fieldset class="form-group">
@@ -103,7 +103,7 @@
 					<input type="number"  class="form-control ng-dirty ng-invalid" name="extra_prezzo" placeholder="prezzo" ng-model="portata.extraPrezzo" ng-pattern="/^\d*(\.\d{1,2})?$/" step="0.01">
 					<div ng-messages="myForm.extra_prezzo.$error">
 						<div ng-message="required">This field is required</div>
-						<div ng-message="pattern">Must be a valid 10 digit phone number</div>
+						<div ng-message="pattern">Must be a valid number</div>
 					</div>
 				</fieldset>
 			</div>
@@ -113,16 +113,9 @@
 	</div>
 	<div class="col-lg-12">
 	<div class="card card-block">
-	{{portata|json}}
-	<button class="btn btn-block btn-success btn-save"  >Save FORM</button>
+	<button class="btn btn-block btn-success btn-save"  >Save New Dish</button>
 	</div>
 	</div>
 </form>
-			    
+
 </div>
-
-
-		
-		
-        
-				

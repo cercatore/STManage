@@ -1,0 +1,47 @@
+<style>
+   .social-buttons{
+    margin:12px 0
+}
+</style>
+<div class="card card-block" ng-controller="homeController as Sample">
+  <div class="col-md-12">
+      Login via
+      <div class="social-buttons">
+        <a href="#" class="btn btn-primary" ng-click="Sample.signInFacebook()"><i class="fa fa-facebook"></i> Facebook</a>
+        <a href="#" class="btn btn-primary" ng-click="Sample.signInGoogle()" style="background-color:#DE5E53"><i class="fa fa-google-plus"></i> Google</a>
+        <!-- <a href="#" class="btn btn-error"><i class="fa fa-twitter"></i> Twitter</a> -->
+      </div>
+  </div>
+  <form class="card-header" name="myform">
+  <h2 class="text-sm-center"> firebase async tets</h2>
+  {{hasFinished}}
+  <div class="form-group" >
+    <input type="text" ng-model="user.email" name="email" class="form-control" placeholder="Email"  ng-required>
+    <div ng-messages="myform.email.$error">
+      <div ng-message="required">Please insert Email.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="password" ng-model="user.password" name="pass" class="form-control" placeholder="Pass" ng-required>
+    <div ng-messages="myform.pass.$error">
+      <div ng-message="required">Please insert Password.</div>
+    </div>
+  </div>
+  <div class="form-group text-center">
+    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+    <label for="remember"> Remember Me</label>
+  </div>
+  <a class="btn btn-primary" ng-click="Sample.signInNormal(user)"><span class="fa fa-login"> LOGIN</span></a>
+  <span class="icon-bar" style="width:3939px"></span>
+</form>
+
+
+
+
+
+
+
+
+
+</div>
+</div>
